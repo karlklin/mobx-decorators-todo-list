@@ -36,11 +36,7 @@ class TodoView extends React.Component {
                     checked={ todo.completed }
                     onChange={ this.onToggleCompleted }
                 />
-                { todo.task }
-                { todo.assignee
-                    ? <small>{ todo.assignee.name }</small>
-                    : null
-                }
+                { todo.task } { todo.assignee ? <strong>{ todo.assignee.name }</strong> : null }
             </li>
         );
     }

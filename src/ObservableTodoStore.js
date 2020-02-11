@@ -22,12 +22,19 @@ class ObservableTodoStore {
             `Progress: ${this.completedTodosCount}/${this.todos.length}`;
     }
 
-    addTodo(task) {
-        this.todos.push({
-            task: task,
-            completed: false,
-            assignee: null
-        });
+    addTodo(task, assignee) {
+        this.pendingRequests++;
+
+        setTimeout(() => {
+            this.todos.push({
+                task: task,
+                completed: false,
+                assignee
+            });
+
+            this.pendingRequests--;
+        }, 3000);
     }
 }
+
 export default new ObservableTodoStore();
